@@ -236,6 +236,9 @@ const seed = async () => {
         if (!existingArticle) {
             await models_1.Article.create({
                 title: 'Top 5 Tips for Buying a Used Car in 2024',
+                excerpt: 'Essential advice for navigating the pre-owned vehicle market this year.',
+                category: 'Car Buying Guide',
+                date: new Date().toISOString().split('T')[0],
                 content: 'Buying a used car can be a great way to save money, but it requires careful inspection. Always check the service history, look for signs of previous accidents, and test drive the vehicle in different conditions...',
                 author: 'Auto Insider',
                 image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=2000'
