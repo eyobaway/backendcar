@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const agentController_1 = require("../controllers/agentController");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+const uploadMiddleware_1 = require("../middlewares/uploadMiddleware");
+const router = (0, express_1.Router)();
+router.get('/', agentController_1.getAllAgents);
+router.get('/me/stats', authMiddleware_1.authenticate, agentController_1.getAgentStats);
+router.put('/me', authMiddleware_1.authenticate, uploadMiddleware_1.upload.single('image'), agentController_1.updateMe);
+router.get('/:id', agentController_1.getAgentById);
+router.post('/', authMiddleware_1.authenticate, agentController_1.createAgent);
+router.put('/:id', authMiddleware_1.authenticate, agentController_1.updateAgent);
+router.delete('/:id', authMiddleware_1.authenticate, agentController_1.deleteAgent);
+exports.default = router;
